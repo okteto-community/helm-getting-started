@@ -1,0 +1,4 @@
+ingress:
+  enabled: true
+  annotations:
+    dev.okteto.com/generate-host: "true"

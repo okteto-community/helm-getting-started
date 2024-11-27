@@ -1,0 +1,17 @@
+build:
+  getting-started:
+    context: app
+deploy:
+  commands:
+  - name: deploy helm 
+    command: |
+      helm upgrade --install getting-started chart \
+        --set image.repository="${OKTETO_BUILD_GETTING_STARTED_REGISTRY}/${OKTETO_BUILD_GETTING_STARTED_REPOSITORY}" \
+        --set image.tag="${OKTETO_BUILD_GETTING_STARTED_SHA}" \
+        --values values-okteto.yaml
+dev:
+  getting-started:
+    command: bash
+    sync:
+    - ./app:/app
+
